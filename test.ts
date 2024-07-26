@@ -3,9 +3,9 @@ import { profile } from '.';
 
 
 profile(
-    () => fetch('https://raw.githubusercontent.com/LearnWebCode/json-example/master/animals-1.json'),
+    () => fetch('https://api.exchangerate-api.com/v4/latest/USD'),
     {
-        label: "animals"
+        label: "forex fetch"
     }
 )
 .then(
