@@ -12,11 +12,20 @@ todos
 
 ```
 import { profile } from 'timer-profiler';
+
+
 profile(
-    () => fetch('http://localhost/users/'),
-    {label: "qualification"}
+    () => fetch('https://api.exchangerate-api.com/v4/latest/USD'),
+    {
+        label: "forex fetch"
+    }
 )
 .then(
-  (response) => ...
-)
+  (response) => {
+    console.log('');
+    console.log('------');
+    console.log('');
+    console.log(response);
+  }
+);
 ```
