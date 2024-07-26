@@ -1,0 +1,3 @@
+[7/27/2024, 12:29:34 AM] [time_profiler] [info] animals time elapsed: 66
+[7/27/2024, 12:30:31 AM] [time_profiler] [info] animals time elapsed: 41
+[7/27/2024, 12:34:03 AM] [time_profiler] [info] animals time elapsed: 362
