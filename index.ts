@@ -7,8 +7,8 @@ const defaultLogger = new Logger('time_profiler');
 export function profile(callback: () => Promise<any>, options: {label?: string, logger?: Logger, profileLogSchema?: Model<any> } = {}): Promise<any> {
     const {
         label = 'unlabeled',
-        logger = defaultLogger,
-        profileLogSchema = profileLog
+        logger = console,
+        profileLogSchema = null
     } = options;
     const startTime = Date.now();
     return callback()
@@ -17,12 +17,14 @@ export function profile(callback: () => Promise<any>, options: {label?: string, 
                 const endTime = Date.now();
                 const timeElapse = endTime - startTime;
                 logger.info(label, 'time elapsed:', timeElapse);
-                new profileLogSchema(
-                    {
-                        label,
-                        time_elapsed: timeElapse
-                    }
-                ).save();
+                if (profileLogSchema) {
+                    new profileLogSchema(
+                        {
+                            label,
+                            time_elapsed: timeElapse
+                        }
+                    ).save();
+                }
                 return results;
             }
         );
