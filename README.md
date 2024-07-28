@@ -29,3 +29,8 @@ profile(
   }
 );
 ```
+
+Result:
+```
+forex fetch time elapsed: 736.977635 ms
+```
