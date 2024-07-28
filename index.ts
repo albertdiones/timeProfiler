@@ -34,3 +34,5 @@ export function profile(callback: () => Promise<any>, options: {label?: string, 
             }
         );
 }
+
+export default profile;
