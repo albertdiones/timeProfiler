@@ -10,13 +10,18 @@ export function profile(callback: () => Promise<any>, options: {label?: string, 
         logger = console,
         profileLogSchema = null
     } = options;
-    const startTime = Date.now();
+
+    const startTime: bigint = process.hrtime.bigint(); // [seconds, nanoseconds]
+
     return callback()
         .then(
             (results) => {
-                const endTime = Date.now();
-                const timeElapse = endTime - startTime;
-                logger.info(label, 'time elapsed:', timeElapse);
+
+                const endTime: bigint = process.hrtime.bigint();    
+                const timeElapseNano = endTime - startTime;
+
+                const timeElapse = Number(timeElapseNano)/1000000;
+                logger.info(label, 'time elapsed:', timeElapse,'ms');
                 if (profileLogSchema) {
                     new profileLogSchema(
                         {
