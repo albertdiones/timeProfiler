@@ -1,6 +1,11 @@
+import mongoose from 'mongoose';
 import { profile } from '.';
 import { profileLog } from './profileLogSchema';
 
+
+const mongoUrl = 'mongodb://localhost:27017/time_profiler_test';
+
+await mongoose.connect(mongoUrl);
 
 
 profile(
