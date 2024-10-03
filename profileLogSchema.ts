@@ -12,4 +12,10 @@ const profileLogSchema = new mongoose.Schema(
 );
 
 export type profileLog = mongoose.InferSchemaType<typeof profileLogSchema> & mongoose.Document;
-export const profileLog = mongoose.model('profileLog', profileLogSchema);
+
+export const getModel = 
+  (mongoose: {
+      model:(name: string, schema: mongoose.Schema) => mongoose.Model<any>
+    }) => mongoose.model('profileLog', profileLogSchema);
+
+export const profileLog = getModel(mongoose);
