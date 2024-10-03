@@ -1,6 +1,6 @@
 {
   "name": "timer-profiler",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Timer Profiler - Measure performance of a promise (time elapased only)",
   "main": "index.ts",
   "scripts": {
