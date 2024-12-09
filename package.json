@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "add_logger": "^0.0.16",
+    "add_logger": "^0.0",
     "mongoose": "^8.5.1"
   },
   "devDependencies": {
