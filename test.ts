@@ -6,8 +6,7 @@ import { profileLog } from './profileLogSchema';
 profile(
     () => fetch('https://api.exchangerate-api.com/v4/latest/USD'),
     {
-        label: "forex fetch",
-        profileLogSchema: profileLog
+      label: "forex fetch", // test.ts:6
     }
 )
 .then(
@@ -16,5 +15,8 @@ profile(
     console.log('------');
     console.log('');
     console.log(response);
+    return response.text();
   }
+).then(
+  (body) => console.log(body)
 );
