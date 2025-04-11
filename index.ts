@@ -6,7 +6,7 @@ import { profileLog } from "./profileLogSchema";
 const defaultLogger = new Logger('time_profiler');
 export function profile(callback: () => Promise<any>, options: {label?: string, logger?: Logger, profileLogSchema?: Model<any> } = {}): Promise<any> {
     const {
-        label = 'unlabeled',
+        label = getCallerFileAndLine(), // instead of unlabeled, use the calling file/line as the label
         logger = console,
         profileLogSchema = null
     } = options;
@@ -34,5 +34,14 @@ export function profile(callback: () => Promise<any>, options: {label?: string, 
             }
         );
 }
+
+function getCallerFileAndLine(): string {
+    const lines = (new Error).stack?.split('\n');
+
+    // credits to kenwu @ tiktok
+    return lines?.[3].match(/([^\/]+)$/)?.[1]
+        ?? 'unlabeled';
+}
+  
 
 export default profile;
